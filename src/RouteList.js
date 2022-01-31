@@ -13,7 +13,9 @@ const RouteList = ({
     setCompanies,
     jobs,
     setJobs,
-    login }) => {
+    login,
+    displayMsg,
+    clearMsg }) => {
 
 
     return (
@@ -22,9 +24,9 @@ const RouteList = ({
             <Route path="/companies" element={<CompanyList companies={companies} setCompanies={setCompanies} />} />
             <Route path="/companies/:handle" element={<CompanyDetails />} />
             <Route path="/jobs" element={<JobList jobs={jobs} setJobs={setJobs} />} />
-            <Route path="/profile" element={<ProfileForm />} />
-            <Route path="/signup" element={<SignupForm login={login} />} />
-            <Route path="/login" element={<LoginForm login={login} />} />
+            <Route path="/profile" element={<ProfileForm displayMsg={displayMsg} clearMsg={clearMsg} />} />
+            <Route path="/signup" element={<SignupForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
+            <Route path="/login" element={<LoginForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
             <Route path="/" element={<Navigate replace to="/jobly" />} />
             <Route path='*' element={<Navigate replace to="/jobly" />} />
         </Routes>
