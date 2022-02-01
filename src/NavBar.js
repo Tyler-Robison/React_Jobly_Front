@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import './Styles/NavBar.css'
+import UserContext from "./context/UserContext";
 
-const NavBar = ({ logout, currentUser }) => {
+const NavBar = ({ logout, token }) => {
+
+    const currentUser = useContext(UserContext)
+
 
     const loggedInView = <>
         <li>
@@ -11,7 +15,9 @@ const NavBar = ({ logout, currentUser }) => {
             </NavLink>
         </li>
         <li>
-            <button onClick={logout}> Log Out </button>
+            {currentUser ?
+                <button onClick={logout}> Log Out {currentUser.firstName}   </button> :
+                <button onClick={logout}> Log Out   </button>}
         </li>
     </>
 
@@ -30,8 +36,6 @@ const NavBar = ({ logout, currentUser }) => {
 
     return (
         <div>
-            {/* debugging purposes only */}
-            <h2>currentUser: {currentUser}</h2>
             <ul>
                 <li>
                     <NavLink className="nav-link" to="/jobly">
@@ -56,26 +60,3 @@ const NavBar = ({ logout, currentUser }) => {
 }
 
 export default NavBar;
-
-// {currentUser &&
-//     <li>
-//         <NavLink className="nav-link" to="/profile">
-//             Profile
-//         </NavLink>
-//     </li> &&
-//     <li>
-//         <button onClick={logout}> Log Out </button>
-//     </li>
-// }
-
-// {!currentUser &&
-//     <li>
-//         <NavLink className="nav-link" to="/signup">
-//             Signup
-//         </NavLink>
-//     </li> &&
-//     <li>
-//         <NavLink className="nav-link" to="/login">
-//             Login
-//         </NavLink>
-//     </li>}
