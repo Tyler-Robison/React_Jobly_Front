@@ -3,7 +3,7 @@ import RouteList from "./RouteList";
 import NavBar from "./NavBar";
 import Message from "./Message";
 import JoblyApi from "./API";
-// import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import UserContext from "./context/UserContext";
 import useLocalStorage from "./customHooks/useLocalStorage";
 
@@ -14,14 +14,6 @@ const Utility = () => {
     const [token, setToken, clearToken] = useLocalStorage('token')
     const [currentUser, setCurrentUser] = useState(null);
     const [msg, setMsg] = useState(null);
-
-    const parseJwt = (token) => {
-        try {
-            return JSON.parse(atob(token.split('.')[1]));
-        } catch (e) {
-            return null;
-        }
-    };
 
     console.log('current user', currentUser)
     console.log('token', token)
@@ -37,7 +29,7 @@ const Utility = () => {
     useEffect(() => {
         const loginLogout = async () => {
             if (token && token.length !== 0) {
-                const username = parseJwt(token).username
+                const username = jwt.decode(token).username
                 // res contains user detail
                 const res = await JoblyApi.getUserInfo(username, token)
                 console.log('token res', res)

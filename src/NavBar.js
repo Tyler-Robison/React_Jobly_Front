@@ -10,6 +10,16 @@ const NavBar = ({ logout, token }) => {
 
     const loggedInView = <>
         <li>
+            <NavLink className="nav-link" to="/companies">
+                Companies
+            </NavLink>
+        </li>
+        <li className="nav-item mr-4">
+            <NavLink className="nav-link" to="/jobs">
+                Jobs
+            </NavLink>
+        </li>
+        <li>
             <NavLink className="nav-link" to="/profile">
                 Profile
             </NavLink>
@@ -40,16 +50,6 @@ const NavBar = ({ logout, token }) => {
                 <li>
                     <NavLink className="nav-link" to="/jobly">
                         Jobly
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="nav-link" to="/companies">
-                        Companies
-                    </NavLink>
-                </li>
-                <li className="nav-item mr-4">
-                    <NavLink className="nav-link" to="/jobs">
-                        Jobs
                     </NavLink>
                 </li>
                 {currentUser ? loggedInView : loggedOutView}
