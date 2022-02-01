@@ -69,6 +69,11 @@ class JoblyApi {
     return res
   }
 
+  static async getUserInfo(token) {
+    const res = await this.request('', token)
+    return res
+  }
+
   // obviously, you'll add a lot here ...
 }
 
