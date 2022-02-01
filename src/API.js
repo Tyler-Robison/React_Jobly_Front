@@ -70,11 +70,23 @@ class JoblyApi {
     return res
   }
 
+  // reset token to blank afterwards?
   static async getUserInfo(username, token) {
-    console.log('api user', username)
     this.token = token
     const res = await this.request(`users/${username}`)
-    console.log('api res', res)
+    return res
+  }
+
+  static async editUser(username, data, token) {
+
+    if (data.firstName === '') data.firstName = null
+    if (data.lastName === '') data.lastName = null
+    if (data.email === '') data.email = null
+    console.log('username', username)
+    console.log('data', data)
+    console.log('token', token)
+    this.token = token
+    const res = await this.request(`users/${username}`, data, 'patch')
     return res
   }
 

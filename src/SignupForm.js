@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import JoblyApi from "./API";
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import signupValidate from "./helpers/signupValidate";
+import UserContext from "./context/UserContext";
+
 
 const SignupForm = ({ login, displayMsg, clearMsg }) => {
     const validate = signupValidate
     const navigate = useNavigate();
+    const currentUser = useContext(UserContext)
+
+    if (currentUser) navigate('/jobly')
 
     const formik = useFormik({
         initialValues: {
@@ -19,6 +24,8 @@ const SignupForm = ({ login, displayMsg, clearMsg }) => {
         validate,
         onSubmit: values => signup(values),
     })
+
+
 
     // const INITIAL_STATE = {
     //     username: '',

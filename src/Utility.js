@@ -34,7 +34,7 @@ const Utility = () => {
                 const res = await JoblyApi.getUserInfo(username, token)
                 console.log('token res', res)
                 setCurrentUser(res.user);
-            } 
+            }
             else {
                 setCurrentUser(null)
             }
@@ -64,6 +64,7 @@ const Utility = () => {
     return (
         <div>
             <UserContext.Provider value={currentUser}>
+                {/* <UserContext.Provider value={currentUser, token}> */}
                 <NavBar logout={logout} token={token} />
                 <Message msg={msg} />
                 <RouteList
@@ -75,6 +76,7 @@ const Utility = () => {
                     login={login}
                     displayMsg={displayMsg}
                     clearMsg={clearMsg}
+                    setCurrentUser={setCurrentUser}
                 />
             </UserContext.Provider>
         </div>

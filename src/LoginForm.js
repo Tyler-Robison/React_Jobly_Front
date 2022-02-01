@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import JoblyApi from "./API";
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import loginValidate from "./helpers/loginValidate";
+import UserContext from "./context/UserContext";
 
 
+// block login sign-up if logged in?
 const LoginForm = ({ login, displayMsg, clearMsg }) => {
     const validate = loginValidate
     const navigate = useNavigate();
+    const currentUser = useContext(UserContext)
+
+    if (currentUser) navigate('/jobly')
 
     const formik = useFormik({
         initialValues: {

@@ -16,16 +16,14 @@ const RouteList = ({
     setJobs,
     login,
     displayMsg,
-    clearMsg }) => {
+    clearMsg,
+    token,
+    setCurrentUser }) => {
 
 
     return (
         <Routes>
             <Route path="/jobly" element={<Home />} />
-
-
-            {/* <Route path="/companies"
-                element={<CompanyList companies={companies} setCompanies={setCompanies} />} /> */}
 
             <Route path="/companies"
                 element={<RequireAuth redirectTo="/login"><CompanyList companies={companies} setCompanies={setCompanies} /></RequireAuth>} />
@@ -35,19 +33,12 @@ const RouteList = ({
                 element={<RequireAuth redirectTo="/login"><CompanyDetails /></RequireAuth>} />
 
 
-            {/* <Route path="/jobs"
-                element={<JobList jobs={jobs} setJobs={setJobs} />} /> */}
-
             <Route path="/jobs"
                 element={<RequireAuth redirectTo="/login"><JobList jobs={jobs} setJobs={setJobs} /></RequireAuth>} />
 
 
-            {/* <Route path="/profile"
-                element={<ProfileForm displayMsg={displayMsg} clearMsg={clearMsg} />} /> */}
-
             <Route path="/profile"
-                element={<RequireAuth redirectTo="/login"><ProfileForm displayMsg={displayMsg} clearMsg={clearMsg} /></RequireAuth>} />
-
+                element={<RequireAuth redirectTo="/login"><ProfileForm displayMsg={displayMsg} clearMsg={clearMsg} token={token} setCurrentUser={setCurrentUser}/></RequireAuth>} />
 
             <Route path="/signup" element={<SignupForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
             <Route path="/login" element={<LoginForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
