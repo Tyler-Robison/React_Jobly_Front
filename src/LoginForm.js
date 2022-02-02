@@ -6,11 +6,10 @@ import loginValidate from "./helpers/loginValidate";
 import UserContext from "./context/UserContext";
 
 
-// block login sign-up if logged in?
 const LoginForm = ({ login, displayMsg, clearMsg }) => {
     const validate = loginValidate
     const navigate = useNavigate();
-    const currentUser = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
 
     if (currentUser) navigate('/jobly')
 
@@ -22,43 +21,17 @@ const LoginForm = ({ login, displayMsg, clearMsg }) => {
         validate,
         onSubmit: values => loginUser(values),
     })
-    // const INITIAL_STATE = {
-    //     username: '',
-    //     password: ''
-    // }
 
-    // const [formData, setFormData] = useState(INITIAL_STATE);
-
-    // check what happens when this fails/ works.
     const loginUser = async (values) => {
         try {
             const res = await JoblyApi.login(values)
             login(res.token);
-            // res.user -> currentUser
-            console.log('user res', res.user)
             clearMsg()
             navigate('/jobly')
-        } catch(err) {
+        } catch (err) {
             displayMsg('Invalid Username/Password')
         }
-        // console.log('login res', res)
-
-        // re-direct on success
-
     }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     loginUser()
-    //     setFormData(INITIAL_STATE)
-    // }
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target
-    //     setFormData(formData => ({
-    //         ...formData, [name]: value
-    //     }))
-    // }
 
     return (
         <div>
@@ -85,7 +58,7 @@ const LoginForm = ({ login, displayMsg, clearMsg }) => {
                     <input
                         id="password"
                         name="password"
-                        type='text'
+                        type='password'
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.password}

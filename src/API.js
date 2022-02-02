@@ -25,7 +25,6 @@ class JoblyApi {
       ? data
       : {};
 
-    console.log('req headers', headers)
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
@@ -82,15 +81,26 @@ class JoblyApi {
     if (data.firstName === '') data.firstName = null
     if (data.lastName === '') data.lastName = null
     if (data.email === '') data.email = null
-    console.log('username', username)
-    console.log('data', data)
-    console.log('token', token)
     this.token = token
     const res = await this.request(`users/${username}`, data, 'patch')
     return res
   }
 
-  // obviously, you'll add a lot here ...
+  static async applyToJob(username, jobId, token) {
+
+    this.token = token
+    const res = await this.request(`users/${username}/jobs/${jobId}`, {}, 'post')
+    return res
+  }
+
+  static async removeApplication(username, jobId, token) {
+
+    this.token = token
+    const res = await this.request(`users/${username}/jobs/${jobId}/remove`, {}, 'post')
+    return res
+  }
+
+
 }
 
 // for now, put token ("testuser" / "password" on class)

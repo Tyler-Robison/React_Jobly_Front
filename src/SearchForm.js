@@ -2,7 +2,7 @@ import { useState } from "react"
 import JoblyApi from "./API";
 import { Button, Input } from "@material-ui/core";
 import SearchIcon from '@mui/icons-material/Search';
-import './SearchForm.css'
+import './Styles/SearchForm.css'
 
 
 const SearchForm = ({ setCompanies, setJobs }) => {

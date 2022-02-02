@@ -1,0 +1,10 @@
+.CompanyDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CompanyDetails-Header {
+    background-color: white;
+    width: 80vw;
+}

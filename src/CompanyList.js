@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import JoblyApi from "./API";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
+import './Styles/CompanyList.css'
 
 
 const CompanyList = ({ companies, setCompanies }) => {
@@ -15,7 +16,7 @@ const CompanyList = ({ companies, setCompanies }) => {
 
     if (companies) {
         return (
-            <div>
+            <div className="CompanyList">
                 <h1>CompanyList</h1>
                 <SearchForm setCompanies={setCompanies} />
                 <div>

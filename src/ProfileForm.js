@@ -6,9 +6,9 @@ import profileValidate from "./helpers/profileValidate";
 import UserContext from "./context/UserContext";
 
 
-const ProfileForm = ({ token, displayMsg, clearMsg, setCurrentUser }) => {
+const ProfileForm = ({ displayMsg, setCurrentUser }) => {
 
-    const currentUser = useContext(UserContext)
+    const { currentUser, token } = useContext(UserContext)
     const validate = profileValidate
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const ProfileForm = ({ token, displayMsg, clearMsg, setCurrentUser }) => {
             initialValues = formik.values
             initialValues.password = ''
             formik.resetForm({
-                values : initialValues
+                values: initialValues
             })
 
             displayMsg('Profile Updated');

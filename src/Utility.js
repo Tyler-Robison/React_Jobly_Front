@@ -15,9 +15,6 @@ const Utility = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [msg, setMsg] = useState(null);
 
-    console.log('current user', currentUser)
-    console.log('token', token)
-
     const displayMsg = (message) => {
         setMsg(message);
     }
@@ -32,47 +29,31 @@ const Utility = () => {
                 const username = jwt.decode(token).username
                 // res contains user detail
                 const res = await JoblyApi.getUserInfo(username, token)
-                console.log('token res', res)
                 setCurrentUser(res.user);
             }
             else {
                 setCurrentUser(null)
             }
-            // console.log('use effect token', token)
         }
         loginLogout()
     }, [token])
 
-    // res.user ->
-    // applications: []
-    // email: "tylerobison758758@gmail.com"
-    // firstName: "Tyler"
-    // isAdmin: false
-    // lastName: "Robison"
-    // username: "janet"
-
-    const logout = () => {
-        setToken(null)
-    }
-
-    const login = (token) => {
-        setToken(token)
-    }
-
-
+    const logout = () => setToken(null)
+    const login = token => setToken(token)
+    
+    const providerObj = {currentUser, token}
 
     return (
         <div>
-            <UserContext.Provider value={currentUser}>
-                {/* <UserContext.Provider value={currentUser, token}> */}
-                <NavBar logout={logout} token={token} />
+            {/* <UserContext.Provider value={currentUser}> */}
+                <UserContext.Provider value={providerObj}>
+                <NavBar logout={logout} />
                 <Message msg={msg} />
                 <RouteList
                     companies={companies}
                     setCompanies={setCompanies}
                     jobs={jobs}
                     setJobs={setJobs}
-                    token={token}
                     login={login}
                     displayMsg={displayMsg}
                     clearMsg={clearMsg}

@@ -1,5 +1,6 @@
 import React from "react"
 import { useNavigate } from 'react-router-dom';
+import './Styles/CompanyCard.css'
 
 const CompanyCard = ({ name, description, logo, handle }) => {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ const CompanyCard = ({ name, description, logo, handle }) => {
     }
 
     return (
-        <div onClick={getDetails}>
+        <div className="CompanyCard" onClick={getDetails}>
             <p>{name}</p>
             <p>{description}</p>
             {logo &&

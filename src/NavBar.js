@@ -3,10 +3,9 @@ import { NavLink } from "react-router-dom";
 import './Styles/NavBar.css'
 import UserContext from "./context/UserContext";
 
-const NavBar = ({ logout, token }) => {
+const NavBar = ({ logout }) => {
 
-    const currentUser = useContext(UserContext)
-
+    const { currentUser } = useContext(UserContext)
 
     const loggedInView = <>
         <li>

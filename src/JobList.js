@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import JoblyApi from "./API";
 import SearchForm from "./SearchForm";
 import JobCard from "./JobCard";
+import './Styles/JobList.css'
 
 const JobList = ({ setJobs, jobs }) => {
 
@@ -13,9 +14,18 @@ const JobList = ({ setJobs, jobs }) => {
         getJobs()
     }, [])
 
+    const gatherApplications = () => {
+
+        jobs.map(job => {
+            return {
+
+            }
+        })
+    }
+
     if (jobs) {
         return (
-            <div>
+            <div className="JobList">
                 <h1>JobList</h1>
                 <SearchForm setJobs={setJobs} />
                 <div>
@@ -26,7 +36,7 @@ const JobList = ({ setJobs, jobs }) => {
                           companyName = {job.companyName}
                           equity = {job.equity}
                           key={job.id}
-                          id={job.id}
+                          jobId={job.id}
                           salary={job.salary}
                           title={job.title}
                           />

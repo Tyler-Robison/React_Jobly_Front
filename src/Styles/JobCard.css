@@ -1,0 +1,12 @@
+.JobCard {
+    background-color: white;
+    border: 2px solid rgb(20, 8, 36);
+    border-radius: 5px;
+    margin-top: 1rem;
+    width: 60vw;
+    box-shadow: 6px 4px 4px rgb(18, 5, 54);
+}
+
+.Apply-Button {
+    margin-bottom: 1rem;
+}

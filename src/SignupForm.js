@@ -9,7 +9,7 @@ import UserContext from "./context/UserContext";
 const SignupForm = ({ login, displayMsg, clearMsg }) => {
     const validate = signupValidate
     const navigate = useNavigate();
-    const currentUser = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
 
     if (currentUser) navigate('/jobly')
 
@@ -25,19 +25,6 @@ const SignupForm = ({ login, displayMsg, clearMsg }) => {
         onSubmit: values => signup(values),
     })
 
-
-
-    // const INITIAL_STATE = {
-    //     username: '',
-    //     password: '',
-    //     firstName: '',
-    //     lastName: '',
-    //     email: ''
-    // }
-
-    // const [formData, setFormData] = useState(INITIAL_STATE);
-
-    // check what happens when this fails/ works.
     // login sets token, which triggers useEffect
     const signup = async (values) => {
         try {
@@ -49,19 +36,6 @@ const SignupForm = ({ login, displayMsg, clearMsg }) => {
             displayMsg('Invalid Username/Password');
         }
     }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     signup()
-    //     setFormData(INITIAL_STATE)
-    // }
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target
-    //     setFormData(formData => ({
-    //         ...formData, [name]: value
-    //     }))
-    // }
 
     return (
         <div>

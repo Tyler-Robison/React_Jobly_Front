@@ -17,7 +17,6 @@ const RouteList = ({
     login,
     displayMsg,
     clearMsg,
-    token,
     setCurrentUser }) => {
 
 
@@ -38,7 +37,7 @@ const RouteList = ({
 
 
             <Route path="/profile"
-                element={<RequireAuth redirectTo="/login"><ProfileForm displayMsg={displayMsg} clearMsg={clearMsg} token={token} setCurrentUser={setCurrentUser}/></RequireAuth>} />
+                element={<RequireAuth redirectTo="/login"><ProfileForm displayMsg={displayMsg} setCurrentUser={setCurrentUser}/></RequireAuth>} />
 
             <Route path="/signup" element={<SignupForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
             <Route path="/login" element={<LoginForm login={login} displayMsg={displayMsg} clearMsg={clearMsg} />} />
