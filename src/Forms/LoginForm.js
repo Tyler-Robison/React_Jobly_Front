@@ -28,7 +28,6 @@ const LoginForm = ({ login, displayMsg, clearMsg }) => {
             // res is a token value
             login(res);
             clearMsg()
-            console.log('about to navigate')
             navigate('/jobly')
         } catch (err) {
             displayMsg('Invalid Username/Password')

@@ -26,17 +26,13 @@ const Utility = () => {
                 const username = jwt.decode(token).username
                 // res contains user detail
                 const res = await JoblyApi.getUserInfo(username, token)
-                console.log('useEff res', res)
                 setCurrentUser(res);
             }
             else {
                 setCurrentUser(null)
             }
-            console.log('about to exit useEffect')
         }
         loginLogout()
-        // this second log doesn't fire
-        console.log('about to exit useEffect2')
     }, [token])
 
     const providerObj = { currentUser, token }
