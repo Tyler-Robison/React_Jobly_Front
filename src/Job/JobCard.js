@@ -10,8 +10,12 @@ const JobCard = ({ companyHandle, companyName, equity, jobId, salary, title }) =
     const { currentUser, token } = useContext(UserContext)
 
 
-
+    // when currentUser changes b/c of profile update 
+    // page crashes b/c can't read includes of undef
+    // happens b/c there is no applications prop on currUser
+    // after editing via loginForm
     useEffect(() => {
+        console.log('useEff currUser*****', currentUser)
         const checkApplicationStatus = () => {
             if (currentUser.applications.includes(jobId)) {
                 setHaveApplied(true)
@@ -45,6 +49,9 @@ const JobCard = ({ companyHandle, companyName, equity, jobId, salary, title }) =
         haveApplied ? removeApplication() : applyToJob();
     }
 
+    if (currentUser) {
+        
+    }
     return (
         <div className="JobCard">
             <p><b>{title}</b></p>

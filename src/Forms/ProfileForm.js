@@ -11,7 +11,7 @@ const ProfileForm = ({ displayMsg, setCurrentUser }) => {
     const { currentUser, token } = useContext(UserContext)
     const validate = profileValidate
     const navigate = useNavigate();
-    console.log(currentUser)
+    // console.log(currentUser)
 
     let initialValues = {
         firstName: currentUser.firstName,
@@ -26,8 +26,6 @@ const ProfileForm = ({ displayMsg, setCurrentUser }) => {
         onSubmit: values => editProfile(values),
     })
 
-    // console.log(formik)
-
     const editProfile = async (values) => {
         try {
             const res = await JoblyApi.editUser(currentUser.username, values, token)
@@ -39,7 +37,7 @@ const ProfileForm = ({ displayMsg, setCurrentUser }) => {
             })
 
             displayMsg('Profile Updated');
-            setCurrentUser(res.user)
+            setCurrentUser({...currentUser,  ...res.user})
         } catch (err) {
             displayMsg('Invalid Profile Edit');
         }
