@@ -28,9 +28,11 @@ const LoginForm = ({ login, displayMsg, clearMsg }) => {
             // res is a token value
             login(res);
             clearMsg()
+            formik.resetForm();
             navigate('/jobly')
         } catch (err) {
             displayMsg('Invalid Username/Password')
+            formik.resetForm();
         }
     }
 

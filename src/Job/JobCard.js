@@ -15,7 +15,6 @@ const JobCard = ({ companyHandle, companyName, equity, jobId, salary, title }) =
     // happens b/c there is no applications prop on currUser
     // after editing via loginForm
     useEffect(() => {
-        console.log('useEff currUser*****', currentUser)
         const checkApplicationStatus = () => {
             if (currentUser.applications.includes(jobId)) {
                 setHaveApplied(true)
@@ -32,7 +31,7 @@ const JobCard = ({ companyHandle, companyName, equity, jobId, salary, title }) =
             const res = await JoblyApi.applyToJob(currentUser.username, jobId, token)
             setHaveApplied(true)
         } catch (err) {
-            console.log('Application failed')
+            console.log(err)
         }
     }
 

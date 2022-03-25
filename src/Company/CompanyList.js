@@ -14,33 +14,28 @@ const CompanyList = ({ companies, setCompanies }) => {
         getCompanies()
     }, [])
 
-    if (companies) {
-        return (
-            <div className="CompanyList">
-                <h1>CompanyList</h1>
-                <SearchForm setCompanies={setCompanies} />
-                <div>
-                    {companies.map((company) => {
-                        return (
-                            <CompanyCard
-                                key={company.handle}
-                                name={company.name}
-                                description={company.description}
-                                logo={company.logoUrl}
-                                handle={company.handle}
-                            />
+    if (!companies) return <h1>Loading...</h1>
 
-                        )
-                    })}
-                </div>
+    return (
+        <div className="CompanyList">
+            <h1>CompanyList</h1>
+            <SearchForm setCompanies={setCompanies} />
+            <div>
+                {companies.map((company) => {
+                    return (
+                        <CompanyCard
+                            key={company.handle}
+                            name={company.name}
+                            description={company.description}
+                            logo={company.logoUrl}
+                            handle={company.handle}
+                        />
+                    )
+                })}
             </div>
-        )
-    } else {
-        return (
-            // replace w/ loading spinner component
-            <h1>Loading...</h1>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default CompanyList;

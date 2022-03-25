@@ -1,5 +1,4 @@
 import axios from "axios";
-import { env } from "process";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -16,7 +15,7 @@ class JoblyApi {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
+    // console.debug("API Call:", endpoint, data, method);
 
     //there are multiple ways to pass an authorization token, this is how you pass it in the header.
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
@@ -104,31 +103,4 @@ class JoblyApi {
 
 }
 
-// MOCK API used for testing purposes. 
-// class mockJoblyApi {
-
-//   static async login(data) {
-//     console.log('mock login fired')
-//       return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbmV0IiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY0Mzg3NDk3Nn0.T7otiPj7HxjkmkfdA93gkEe9Fhv-rVMlPIsLQ3sfayY'
-//   }
-
-//   static async getUserInfo(data, token) {
-//     console.log('mock getUserInfo fired')
-//       const fakeResp = {
-//           applications: [97],
-//           email: "Janet@gmail.com",
-//           firstName: "Janet",
-//           isAdmin: false,
-//           lastName: "Outlaw",
-//           username: "janet"
-//       }
-//       return fakeResp
-//   }
-// }
-
-// if testing ten NODE_ENV = 'test' -> export mockAPI
-// let exportClass;
-// process.env.NODE_ENV === 'test' ? exportClass = mockJoblyApi : exportClass = JoblyApi;
-
-// export default exportClass;
 export default JoblyApi;

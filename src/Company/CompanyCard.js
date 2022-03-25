@@ -4,10 +4,8 @@ import './CompanyCard.css'
 
 const CompanyCard = ({ name, description, logo, handle }) => {
     const navigate = useNavigate();
-    const getDetails = () => {
-        navigate(`/companies/${handle}`)
-    }
-
+    const getDetails = () => navigate(`/companies/${handle}`)
+    
     return (
         <div className="CompanyCard" onClick={getDetails}>
             <p>{name}</p>

@@ -24,7 +24,7 @@ const Utility = () => {
         const loginLogout = async () => {
             if (token && token.length !== 0) {
                 const username = jwt.decode(token).username
-                // res contains user detail
+                // res contains user detail + job applications
                 const res = await JoblyApi.getUserInfo(username, token)
                 setCurrentUser(res);
             }

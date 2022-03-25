@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import JoblyApi from "../API/API";
-import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import profileValidate from "../helpers/profileValidate";
 import UserContext from "../context/UserContext";
@@ -10,8 +9,6 @@ const ProfileForm = ({ displayMsg, setCurrentUser }) => {
 
     const { currentUser, token } = useContext(UserContext)
     const validate = profileValidate
-    const navigate = useNavigate();
-    // console.log(currentUser)
 
     let initialValues = {
         firstName: currentUser.firstName,
@@ -30,6 +27,7 @@ const ProfileForm = ({ displayMsg, setCurrentUser }) => {
         try {
             const res = await JoblyApi.editUser(currentUser.username, values, token)
 
+            // after edit, set new init values
             initialValues = formik.values
             initialValues.password = ''
             formik.resetForm({

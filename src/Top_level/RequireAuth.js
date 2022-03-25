@@ -11,6 +11,7 @@ import UserContext from "../context/UserContext";
 
 const RequireAuth = ({ children, redirectTo }) => {
     const { currentUser } = useContext(UserContext)
+    // console.log('curr user', currentUser)
 
     return currentUser ? children : <Navigate to={redirectTo} />;
 }

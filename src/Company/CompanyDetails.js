@@ -16,29 +16,26 @@ const CompanyDetails = () => {
         getDetails()
     }, [])
 
-    if (company) {
-        return (
-            <div className="CompanyDetails">
-                <div className="CompanyDetails-Header">
-                    <h1>{company.handle}</h1>
-                    <h3>{company.description}</h3>
-                </div>
-                {company.jobs.map(job => {
-                    return <JobCard
-                        title={job.title}
-                        equity={job.equity}
-                        salary={job.salary}
-                        key={job.id}
-                        jobId={job.id}
-                    />
-                })}
+    if (!company) return <p>Loading...</p>
+
+    return (
+        <div className="CompanyDetails">
+            <div className="CompanyDetails-Header">
+                <h1>{company.handle}</h1>
+                <h3>{company.description}</h3>
             </div>
-        )
-    } else {
-        return (
-            <p>Loading...</p>
-        )
-    }
+            {company.jobs.map(job => {
+                return <JobCard
+                    title={job.title}
+                    equity={job.equity}
+                    salary={job.salary}
+                    key={job.id}
+                    jobId={job.id}
+                />
+            })}
+        </div>
+    )
+
 }
 
 export default CompanyDetails;

@@ -31,9 +31,11 @@ const SignupForm = ({ login, displayMsg, clearMsg }) => {
             const res = await JoblyApi.register(values)
             login(res.token);
             clearMsg();
+            formik.resetForm();
             navigate('/jobly');
         } catch (err) {
             displayMsg('Invalid Username/Password');
+            formik.resetForm();
         }
     }
 

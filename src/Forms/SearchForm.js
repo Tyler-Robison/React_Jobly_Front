@@ -11,6 +11,8 @@ const SearchForm = ({ setCompanies, setJobs }) => {
     }
     const [formData, setFormData] = useState(INITIAL_STATE);
 
+    // SearchForm is rendered in JobsList and CompList
+    // need to determine which data we are getting
     const filter = async (filterTerm) => {
         if (setCompanies) {
             const res = await JoblyApi.getCompanies(filterTerm)
@@ -48,7 +50,6 @@ const SearchForm = ({ setCompanies, setJobs }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <Input
-                    // color='secondary'
                     variant='Outlined'
                     type='text'
                     name='text'
